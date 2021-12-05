@@ -13,6 +13,7 @@ public class AbstractPage {
     private JavascriptExecutor jsExecutor;
     private WebDriverWait explicitWait;
 
+    public static final long LONG_TIMEOUT = 30;
     public void openPageUrl(WebDriver driver, String url) {
         driver.get(url);
         sleepInSecond(3);
@@ -74,12 +75,12 @@ public class AbstractPage {
     }
 
     public void waitToElementVisible(WebDriver driver, String locator) {
-        explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+        explicitWait = new WebDriverWait(driver, LONG_TIMEOUT);
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
     }
 
     public void waitToElementClickable(WebDriver driver, String locator) {
-        explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+        explicitWait = new WebDriverWait(driver, LONG_TIMEOUT);
         explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
     }
 
